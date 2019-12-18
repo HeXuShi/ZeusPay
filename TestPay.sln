@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlipayApiTest", "AlipayApiTest\AlipayApiTest.csproj", "{DFD262C2-AC3B-4898-BAE4-00C28B029077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusAlipay", "ZeusAlipay\ZeusAlipay.csproj", "{510960E6-79EB-4975-A4E0-90C1DBCDFF11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFD262C2-AC3B-4898-BAE4-00C28B029077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD262C2-AC3B-4898-BAE4-00C28B029077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD262C2-AC3B-4898-BAE4-00C28B029077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD262C2-AC3B-4898-BAE4-00C28B029077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{510960E6-79EB-4975-A4E0-90C1DBCDFF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{510960E6-79EB-4975-A4E0-90C1DBCDFF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{510960E6-79EB-4975-A4E0-90C1DBCDFF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{510960E6-79EB-4975-A4E0-90C1DBCDFF11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA6F5490-31CE-49A1-8D59-36C1ADB4104A}
+	EndGlobalSection
+EndGlobal
