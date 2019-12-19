@@ -21,13 +21,10 @@ namespace ZeusAlipay.Tests
         {
             lock(Config)
             {
-                if(Config == null)
+                if(Config == null && File.Exists(path))
                 {
-                    if(File.Exists(path))
-                    {
-                        string text = File.ReadAllText(path);
-                        Config = JsonConvert.DeserializeObject<AlipayContext>(text);
-                    }
+                    string text = File.ReadAllText(path);
+                    Config = JsonConvert.DeserializeObject<AlipayContext>(text);
                 }
             }
         }
