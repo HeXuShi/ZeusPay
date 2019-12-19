@@ -15,18 +15,21 @@ namespace ZeusAlipay.Tests
     public static class Settings
     {
         static string path = @"..\..\..\..\..\setting.json";
-        public static AlipayContext Config { get; set; } = null;
-        [SetUp]
-        public static void Setup()
+        static AlipayContext Config { get; set; } = new AlipayContext();
+        static bool isSetup = false;
+        public static AlipayContext GetConfig()
         {
             lock(Config)
             {
-                if(Config == null && File.Exists(path))
+                if (!isSetup && File.Exists(path))
                 {
                     string text = File.ReadAllText(path);
                     Config = JsonConvert.DeserializeObject<AlipayContext>(text);
                 }
+                else
+                    throw new InvalidOperationException("Create setting.json fail");
             }
+            return Config;
         }
     }
 }

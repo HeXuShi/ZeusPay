@@ -8,13 +8,19 @@ namespace ZeusAlipay.Tests
     [TestFixture]
     public class AuthTokenTests
     {
+        AlipayContext config;
+        [SetUp]
+        public void Setup()
+        {
+            config = Settings.GetConfig();
+        }
         [Test]
         public async Task CreateToken()
         {
 
             var arg = new AuthTokenArg 
             {
-                AppId = Settings.Config.AppId,
+                AppId = config.AppId,
                 BizContent = new AuthTokenContent
                 {
                     GrantType = AuthTokenRequest.authorization_code
@@ -30,7 +36,7 @@ namespace ZeusAlipay.Tests
         [Test]
         public void RefreshToken()
         {
-
+            Assert.True(true);
         }
     }
 }
