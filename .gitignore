@@ -1,3 +1,6 @@
 ZeusAlipay/bin/
 ZeusAlipay/obj/
 .vs
+setting.json
+Tests/ZeusAlipay.Tests/bin/
+Tests/ZeusAlipay.Tests/obj/
