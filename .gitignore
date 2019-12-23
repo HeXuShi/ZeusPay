@@ -6,3 +6,4 @@ Tests/ZeusAlipay.Tests/bin/
 Tests/ZeusAlipay.Tests/obj/
 /Demos/ZeusAlipayMvcApp/obj
 /alipayRootCert.crt
+/Demos/ZeusAlipayMvcApp/bin/Debug/netcoreapp3.1
