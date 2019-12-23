@@ -4,3 +4,5 @@ ZeusAlipay/obj/
 setting.json
 Tests/ZeusAlipay.Tests/bin/
 Tests/ZeusAlipay.Tests/obj/
+/Demos/ZeusAlipayMvcApp/obj
+/alipayRootCert.crt

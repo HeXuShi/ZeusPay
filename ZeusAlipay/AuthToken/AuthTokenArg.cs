@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using ZeusAlipay.Util;
 
 namespace ZeusAlipay.AuthToken
 {
@@ -13,6 +14,8 @@ namespace ZeusAlipay.AuthToken
         public string AppId { get; set; }
         [JsonProperty("method")]
         public string Method => "alipay.open.auth.token.app";
+        [JsonProperty("format")]
+        public string Format => "JSON";
         [JsonProperty("charset")]
         public string Charset => "utf-8";
 
@@ -23,11 +26,20 @@ namespace ZeusAlipay.AuthToken
         [JsonProperty("timestamp")]
         public string Timestamp { get; set; }
         [JsonProperty("version")]
-        public string Version { get; set; }
+        public string Version { get; set; } = "1.0";
         [JsonProperty("app_auth_token")]
         public string AppAuthToken { get; set; }
         [JsonProperty("bizContent")]
         public AuthTokenContent BizContent { get; set; }
+        public AuthTokenArg()
+        {
+            Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+        public void SetSign(string privatePem)
+        {
+            string text = JsonConvert.SerializeObject(BizContent);
+            Sign = AlipaySignature.RSA2SignCharSet(text, privatePem, "utf-8");
+        }
     }
 
     public class AuthTokenContent

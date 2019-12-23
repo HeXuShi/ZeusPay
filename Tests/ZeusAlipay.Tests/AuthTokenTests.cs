@@ -17,15 +17,17 @@ namespace ZeusAlipay.Tests
         [Test]
         public async Task CreateToken()
         {
+            var content = new AuthTokenContent
+            {
+                GrantType = AuthTokenRequest.authorization_code
+            };
 
-            var arg = new AuthTokenArg 
+            var arg = new AuthTokenArg
             {
                 AppId = config.AppId,
-                BizContent = new AuthTokenContent
-                {
-                    GrantType = AuthTokenRequest.authorization_code
-                }
+                BizContent = content
             };
+            arg.SetSign(@"D:\Programing\Dev Repos\ZeusPay\alipayRootCert.crt");
             var result = await AuthTokenRequest.Request(arg);
             Assert.IsNotNull(result);
             if(result != null)

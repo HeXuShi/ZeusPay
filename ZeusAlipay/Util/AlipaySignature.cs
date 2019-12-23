@@ -52,6 +52,44 @@ namespace ZeusAlipay.Util
             return RSASignCharSet(signContent, privateKeyPem, charset, keyFromFile, signType);
         }
         //*/
+        public static string RSA2SignCharSet(string data, string privateKeyPem, string charset)
+        { 
+            string signType = "RSA2";
+            //return RSASignCharSet(data, privateKeyPem, charset, "RSA2");
+            //RSACryptoServiceProvider rsaCsp = LoadCertificateFile(privateKeyPem, signType);
+            var text = File.ReadAllText(privateKeyPem);
+            text   = text.Replace("\r", "");
+            text = text.Replace("\n", "");
+            byte[] res = null;
+            byte[] bytes = Encoding.UTF8.GetBytes(text);
+                if (bytes[0] != 0x30)
+                {
+                    res = GetPem("RSA PRIVATE KEY", bytes);
+                }
+                try
+                {
+                    RSACryptoServiceProvider rsa = DecodeRSAPrivateKey(res, signType);
+
+                    byte[] dataBytes = null;
+
+                    if (string.IsNullOrEmpty(charset))
+                    {
+                        dataBytes = Encoding.UTF8.GetBytes(data);
+                    }
+                    else
+                    {
+                        dataBytes = Encoding.GetEncoding(charset).GetBytes(data);
+                    }
+
+                    byte[] signatureBytes = rsa.SignData(dataBytes, "SHA256");
+
+                    return Convert.ToBase64String(signatureBytes);
+                }
+                catch (Exception ex)
+                {
+                }
+                return null;
+        }
         public static string RSASignCharSet(string data, string privateKeyPem, string charset, string signType)
         {
             RSACryptoServiceProvider rsaCsp = LoadCertificateFile(privateKeyPem, signType);
@@ -463,10 +501,14 @@ namespace ZeusAlipay.Util
             string pem = Encoding.UTF8.GetString(data);
             string header = String.Format("-----BEGIN {0}-----\\n", type);
             string footer = String.Format("-----END {0}-----", type);
+            if (pem.IndexOf(header) == -1)
+            {
+                return Convert.FromBase64String(pem);
+            }
             int start = pem.IndexOf(header) + header.Length;
             int end = pem.IndexOf(footer, start);
-            string base64 = pem.Substring(start, (end - start));
 
+            string base64 = pem.Substring(start, (end - start));
             return Convert.FromBase64String(base64);
         }
 

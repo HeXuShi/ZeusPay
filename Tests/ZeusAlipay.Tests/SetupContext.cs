@@ -11,6 +11,7 @@ namespace ZeusAlipay.Tests
     public class AlipayContext
     {
         public string AppId { get; set; }
+        public string AppPrivateKey { get; set; }
     }
     public static class Settings
     {
