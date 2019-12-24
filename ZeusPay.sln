@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusAlipay.Tests", "Tests\Z
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{724CD1AE-DE26-4C0A-B163-8F227EA758B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusAlipayMvcApp", "Demos\ZeusAlipayMvcApp\ZeusAlipayMvcApp.csproj", "{6D6EEF17-AB5E-4713-BC26-81C4D79F765D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusAlipayMvcApp", "Demos\ZeusAlipayMvcApp\ZeusAlipayMvcApp.csproj", "{6D6EEF17-AB5E-4713-BC26-81C4D79F765D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusPaypal", "ZeusPaypal\ZeusPaypal.csproj", "{4068D5DB-A113-493A-8908-2CD9CCF4C69F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{6D6EEF17-AB5E-4713-BC26-81C4D79F765D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D6EEF17-AB5E-4713-BC26-81C4D79F765D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D6EEF17-AB5E-4713-BC26-81C4D79F765D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4068D5DB-A113-493A-8908-2CD9CCF4C69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4068D5DB-A113-493A-8908-2CD9CCF4C69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4068D5DB-A113-493A-8908-2CD9CCF4C69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4068D5DB-A113-493A-8908-2CD9CCF4C69F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
