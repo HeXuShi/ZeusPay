@@ -8,40 +8,26 @@ using ZeusAlipay.Util;
 
 namespace ZeusAlipay.AuthToken
 {
-    public class AuthTokenArg
+    public class AuthTokenArg : BaseAlipayArg
     {
-        [JsonProperty("app_id")]
-        public string AppId { get; set; }
-        [JsonProperty("method")]
-        public string Method => "alipay.open.auth.token.app";
-        [JsonProperty("format")]
-        public string Format => "JSON";
-        [JsonProperty("charset")]
-        public string Charset => "utf-8";
-
-        [JsonProperty("sign_type")]
-        public string SignType => "RSA2";
-        [JsonProperty("sign")]
-        public string Sign { get; set; }
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-        [JsonProperty("version")]
-        public string Version { get; set; } = "1.0";
-        [JsonProperty("app_auth_token")]
-        public string AppAuthToken { get; set; }
         [JsonProperty("bizContent")]
         public AuthTokenContent BizContent { get; set; }
         public AuthTokenArg()
         {
+            base._method = "alipay.open.auth.token.app";
             Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
-        public void SetSign(string privatePem)
+        public void SetRSA2Sign(string privatePem)
         {
             string text = JsonConvert.SerializeObject(BizContent);
-            Sign = AlipaySignature.RSA2SignCharSet(text, privatePem, "utf-8");
+            Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA2");
+        }
+        public void SetRSASign(string privatePem)
+        {
+            string text = JsonConvert.SerializeObject(BizContent);
+            Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA");
         }
     }
-
     public class AuthTokenContent
     {
         [JsonProperty("grant_type")]

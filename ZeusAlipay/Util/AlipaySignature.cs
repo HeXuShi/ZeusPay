@@ -52,44 +52,44 @@ namespace ZeusAlipay.Util
             return RSASignCharSet(signContent, privateKeyPem, charset, keyFromFile, signType);
         }
         //*/
-        public static string RSA2SignCharSet(string data, string privateKeyPem, string charset)
-        { 
-            string signType = "RSA2";
-            //return RSASignCharSet(data, privateKeyPem, charset, "RSA2");
-            //RSACryptoServiceProvider rsaCsp = LoadCertificateFile(privateKeyPem, signType);
-            var text = File.ReadAllText(privateKeyPem);
-            text   = text.Replace("\r", "");
-            text = text.Replace("\n", "");
-            byte[] res = null;
-            byte[] bytes = Encoding.UTF8.GetBytes(text);
-                if (bytes[0] != 0x30)
-                {
-                    res = GetPem("RSA PRIVATE KEY", bytes);
-                }
-                try
-                {
-                    RSACryptoServiceProvider rsa = DecodeRSAPrivateKey(res, signType);
+        //public static string RSA2SignCharSet(string data, string privateKeyPem, string charset)
+        //{
+        //    string signType = "RSA2";
+        //    //return RSASignCharSet(data, privateKeyPem, charset, "RSA2");
+        //    //RSACryptoServiceProvider rsaCsp = LoadCertificateFile(privateKeyPem, signType);
+        //    var text = File.ReadAllText(privateKeyPem);
+        //    text = text.Replace("\r", "");
+        //    text = text.Replace("\n", "");
+        //    byte[] res = null;
+        //    byte[] bytes = Encoding.UTF8.GetBytes(text);
+        //    if (bytes[0] != 0x30)
+        //    {
+        //        res = GetPem("RSA PRIVATE KEY", bytes);
+        //    }
+        //    try
+        //    {
+        //        RSACryptoServiceProvider rsa = DecodeRSAPrivateKey(res, signType);
 
-                    byte[] dataBytes = null;
+        //        byte[] dataBytes = null;
 
-                    if (string.IsNullOrEmpty(charset))
-                    {
-                        dataBytes = Encoding.UTF8.GetBytes(data);
-                    }
-                    else
-                    {
-                        dataBytes = Encoding.GetEncoding(charset).GetBytes(data);
-                    }
+        //        if (string.IsNullOrEmpty(charset))
+        //        {
+        //            dataBytes = Encoding.UTF8.GetBytes(data);
+        //        }
+        //        else
+        //        {
+        //            dataBytes = Encoding.GetEncoding(charset).GetBytes(data);
+        //        }
 
-                    byte[] signatureBytes = rsa.SignData(dataBytes, "SHA256");
+        //        byte[] signatureBytes = rsa.SignData(dataBytes, "SHA256");
 
-                    return Convert.ToBase64String(signatureBytes);
-                }
-                catch (Exception ex)
-                {
-                }
-                return null;
-        }
+        //        return Convert.ToBase64String(signatureBytes);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //    return null;
+        //}
         public static string RSASignCharSet(string data, string privateKeyPem, string charset, string signType)
         {
             RSACryptoServiceProvider rsaCsp = LoadCertificateFile(privateKeyPem, signType);
@@ -514,25 +514,25 @@ namespace ZeusAlipay.Util
 
         private static RSACryptoServiceProvider LoadCertificateFile(string filename, string signType)
         {
-            using (System.IO.FileStream fs = System.IO.File.OpenRead(filename))
+            var text = File.ReadAllText(filename);
+            text = text.Replace("\r", "");
+            text = text.Replace("\n", "");
+            byte[] res = null;
+            byte[] data = Encoding.UTF8.GetBytes(text);
+
+            if (data[0] != 0x30)
             {
-                byte[] data = new byte[fs.Length];
-                byte[] res = null;
-                fs.Read(data, 0, data.Length);
-                if (data[0] != 0x30)
-                {
-                    res = GetPem("RSA PRIVATE KEY", data);
-                }
-                try
-                {
-                    RSACryptoServiceProvider rsa = DecodeRSAPrivateKey(res, signType);
-                    return rsa;
-                }
-                catch (Exception ex)
-                {
-                }
-                return null;
+                res = GetPem("RSA PRIVATE KEY", data);
             }
+            try
+            {
+                RSACryptoServiceProvider rsa = DecodeRSAPrivateKey(res, signType);
+                return rsa;
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
         }
         private static RSACryptoServiceProvider LoadCertificateString(string strKey, string signType)
         {
