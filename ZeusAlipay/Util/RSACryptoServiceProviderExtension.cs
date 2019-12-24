@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ZeusAlipay.Util
 {
-    //public static class RSACryptoServiceProviderExtension
+    public static class RSACryptoServiceProviderExtension
     {
 
         #region Methods
@@ -196,48 +196,48 @@ namespace ZeusAlipay.Util
         {
             internal CRYPT_ALGORITHM_IDENTIFIER Algorithm;
             internal CRYPT_BIT_BLOB PublicKey;
-        }
-
-        #endregion P/Invoke Structures
-
-        #region P/Invoke Functions
-
-        /// <summary>Function for Crypto API.</summary>
-        //[DllImport("advapi32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptDestroyKey(IntPtr hKey);
-
-        ///// <summary>Function for Crypto API.</summary>
-        //[DllImport("advapi32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptImportKey(IntPtr hProv, byte[] pbKeyData, UInt32 dwDataLen, IntPtr hPubKey, UInt32 dwFlags, ref IntPtr hKey);
-
-        ///// <summary>Function for Crypto API.</summary>
-        //[DllImport("advapi32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptReleaseContext(IntPtr hProv, Int32 dwFlags);
-
-        ///// <summary>Function for Crypto API.</summary>
-        //[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptAcquireContext(ref IntPtr hProv, string pszContainer, string pszProvider, CRYPT_PROVIDER_TYPE dwProvType, CRYPT_ACQUIRE_CONTEXT_FLAGS dwFlags);
-
-        ///// <summary>Function from Crypto API.</summary>
-        //[DllImport("crypt32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptStringToBinary(string sPEM, UInt32 sPEMLength, CRYPT_STRING_FLAGS dwFlags, [Out] byte[] pbBinary, ref UInt32 pcbBinary, out UInt32 pdwSkip, out UInt32 pdwFlags);
-
-        ///// <summary>Function from Crypto API.</summary>
-        //[DllImport("crypt32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptDecodeObjectEx(CRYPT_ENCODING_FLAGS dwCertEncodingType, IntPtr lpszStructType, byte[] pbEncoded, UInt32 cbEncoded, CRYPT_DECODE_FLAGS dwFlags, IntPtr pDecodePara, ref byte[] pvStructInfo, ref UInt32 pcbStructInfo);
-
-        ///// <summary>Function from Crypto API.</summary>
-        //[DllImport("crypt32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //internal static extern bool CryptDecodeObject(CRYPT_ENCODING_FLAGS dwCertEncodingType, IntPtr lpszStructType, byte[] pbEncoded, UInt32 cbEncoded, CRYPT_DECODE_FLAGS flags, [In, Out] byte[] pvStructInfo, ref UInt32 cbStructInfo);
-
-        #endregion P/Invoke Functions
-
     }
+
+    #endregion P/Invoke Structures
+
+    #region P/Invoke Functions
+
+    // <summary>Function for Crypto API.</summary>
+    [DllImport("advapi32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptDestroyKey(IntPtr hKey);
+
+    /// <summary>Function for Crypto API.</summary>
+    [DllImport("advapi32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptImportKey(IntPtr hProv, byte[] pbKeyData, UInt32 dwDataLen, IntPtr hPubKey, UInt32 dwFlags, ref IntPtr hKey);
+
+    /// <summary>Function for Crypto API.</summary>
+    [DllImport("advapi32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptReleaseContext(IntPtr hProv, Int32 dwFlags);
+
+    /// <summary>Function for Crypto API.</summary>
+    [DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptAcquireContext(ref IntPtr hProv, string pszContainer, string pszProvider, CRYPT_PROVIDER_TYPE dwProvType, CRYPT_ACQUIRE_CONTEXT_FLAGS dwFlags);
+
+    /// <summary>Function from Crypto API.</summary>
+    [DllImport("crypt32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptStringToBinary(string sPEM, UInt32 sPEMLength, CRYPT_STRING_FLAGS dwFlags, [Out] byte[] pbBinary, ref UInt32 pcbBinary, out UInt32 pdwSkip, out UInt32 pdwFlags);
+
+    /// <summary>Function from Crypto API.</summary>
+    [DllImport("crypt32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptDecodeObjectEx(CRYPT_ENCODING_FLAGS dwCertEncodingType, IntPtr lpszStructType, byte[] pbEncoded, UInt32 cbEncoded, CRYPT_DECODE_FLAGS dwFlags, IntPtr pDecodePara, ref byte[] pvStructInfo, ref UInt32 pcbStructInfo);
+
+    /// <summary>Function from Crypto API.</summary>
+    [DllImport("crypt32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    internal static extern bool CryptDecodeObject(CRYPT_ENCODING_FLAGS dwCertEncodingType, IntPtr lpszStructType, byte[] pbEncoded, UInt32 cbEncoded, CRYPT_DECODE_FLAGS flags, [In, Out] byte[] pvStructInfo, ref UInt32 cbStructInfo);
+
+    #endregion P/Invoke Functions
+
+}
 }

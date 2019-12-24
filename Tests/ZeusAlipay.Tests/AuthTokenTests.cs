@@ -27,7 +27,7 @@ namespace ZeusAlipay.Tests
                 AppId = config.AppId,
                 BizContent = content
             };
-            arg.SetSign(@"D:\Programing\Dev Repos\ZeusPay\alipayRootCert.crt");
+            arg.SetRSA2Sign(@"D:\Programing\Dev Repos\ZeusPay\alipayRootCert.crt");
             var result = await AuthTokenRequest.Request(arg);
             Assert.IsNotNull(result);
             if(result != null)
