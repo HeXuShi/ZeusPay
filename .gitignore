@@ -10,4 +10,5 @@ Tests/ZeusAlipay.Tests/obj/
 /Demos/ZeusAlipayMvcApp/.config
 /Demos/ZeusAlipayMvcApp/bin/Release/netcoreapp3.1
 /Demos/ZeusAlipayMvcApp/Properties/PublishProfiles
-/ZeusPaypal/obj
+ZeusPaypal/obj/
+ZeusPaypal/bin/
