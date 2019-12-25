@@ -15,3 +15,4 @@ Tests/ZeusAlipay.Tests/obj/
 ZeusPaypal/obj/
 ZeusPaypal/bin/
 /Tests/ZeusPaypal.Tests/obj
+/Tests/ZeusPaypal.Tests/bin/Debug/netcoreapp3.1

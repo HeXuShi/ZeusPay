@@ -9,13 +9,13 @@ using ZeusAlipay.Trade.Models;
 
 namespace ZeusAlipay.Trade
 {
-    public class PrecreateRequest
+    public static class PrecreateRequest
     {
-        public static async Task Request(PrecreateArg arg)
+        public static async Task Request(this AlipayClient client, PrecreateArg arg)
         {
             string text = JsonConvert.SerializeObject(arg);
-            var client = new HttpClient();
-            var response = await client.PostAsync(AlipayClient.Host, new StringContent(text));
+            var http = new HttpClient();
+            var response = await http.PostAsync(client.Host, new StringContent(text));
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();

@@ -10,15 +10,15 @@ using ZeusAlipay.Util;
 
 namespace ZeusAlipay.AuthToken
 {
-    public class AuthTokenRequest
+    public static class AuthTokenRequest
     {
         public static string authorization_code => "authorization_code";
         public static string refresh_token => "refresh_token";
-        public static async Task<AuthTokenResult> Request(AuthTokenArg arg)
+        public static async Task<AuthTokenResult> Request(this AlipayClient client, AuthTokenArg arg)
         {
             string text = JsonConvert.SerializeObject(arg);
-            var client = new HttpClient();
-            var response = await client.PostAsync(AlipayClient.Host, new StringContent(text));
+            var http = new HttpClient();
+            var response = await http.PostAsync(client.Host, new StringContent(text));
             if(response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();

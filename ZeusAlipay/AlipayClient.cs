@@ -26,12 +26,10 @@ namespace ZeusAlipay
         }
         public void UseSandboxEnv()
         {
-            Setup();
             _host = SandboxHost;
         }
         public void UseProductEnv()
         {
-            Setup();
             _host = ProductHost;
         }
     }
