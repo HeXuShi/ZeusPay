@@ -4,16 +4,16 @@ using System.Text;
 
 namespace ZeusAlipay
 {
-    internal static class Setting
+    public class AlipayClient
     {
-        private static string SandboxHost => "https://openapi.alipaydev.com/gateway.do";
-        private static string ProductHost => "https://openapi.alipay.com/gateway.do";
-        private static string _host = null;
-        static void Setup()
+        private string SandboxHost => "https://openapi.alipaydev.com/gateway.do";
+        private string ProductHost => "https://openapi.alipay.com/gateway.do";
+        private string _host = null;
+        public AlipayClient()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
-        public static string Host 
+        public string Host 
         { 
             get 
             { 
@@ -24,12 +24,12 @@ namespace ZeusAlipay
                 return _host; 
             } 
         }
-        public static void UseSandboxEnv()
+        public void UseSandboxEnv()
         {
             Setup();
             _host = SandboxHost;
         }
-        public static void UseProductEnv()
+        public void UseProductEnv()
         {
             Setup();
             _host = ProductHost;

@@ -5,25 +5,24 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using ZeusAlipay.Trade.Models;
-
-namespace ZeusAlipay.Trade
+using ZeusPaypal.Orders.Models;
+namespace ZeusPaypal.Orders
 {
-    public class PrecreateRequest
+    public static class CreateOrderRequest
     {
-        public static async Task Request(PrecreateArg arg)
+        public static async Task<CreateOrderResult> Request(CreateOrderArg arg)
         {
             string text = JsonConvert.SerializeObject(arg);
             var client = new HttpClient();
-            var response = await client.PostAsync(AlipayClient.Host, new StringContent(text));
+            var response = await client.PostAsync(Setting.Host + "/v2/checkout/orders", new StringContent(text));
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                //return JsonConvert.DeserializeObject<AuthTokenResult>(content);
+                return JsonConvert.DeserializeObject<CreateOrderResult>(content);
             }
             else
             {
-                //return null;
+                return null;
             }
         }
     }

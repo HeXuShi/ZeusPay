@@ -18,7 +18,7 @@ namespace ZeusAlipay.AuthToken
         {
             string text = JsonConvert.SerializeObject(arg);
             var client = new HttpClient();
-            var response = await client.PostAsync(Setting.Host, new StringContent(text));
+            var response = await client.PostAsync(AlipayClient.Host, new StringContent(text));
             if(response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
