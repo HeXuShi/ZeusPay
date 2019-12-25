@@ -10,11 +10,11 @@ namespace ZeusPaypal.Orders
 {
     public static class CreateOrderRequest
     {
-        public static async Task<CreateOrderResult> Request(CreateOrderArg arg)
+        public static async Task<CreateOrderResult> CreateOrder(this PaypayClient client, CreateOrderArg arg)
         {
             string text = JsonConvert.SerializeObject(arg);
-            var client = new HttpClient();
-            var response = await client.PostAsync(Setting.Host + "/v2/checkout/orders", new StringContent(text));
+            var http = new HttpClient();
+            var response = await http.PostAsync(client.Host + "/v2/checkout/orders", new StringContent(text));
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();

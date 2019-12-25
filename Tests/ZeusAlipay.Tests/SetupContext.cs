@@ -15,7 +15,7 @@ namespace ZeusAlipay.Tests
     }
     public static class Settings
     {
-        static string path = @"..\..\..\..\..\setting.json";
+        static string path = @"..\..\..\..\..\alipay.setting.json";
         static AlipayContext Config { get; set; } = new AlipayContext();
         static bool isSetup = false;
         public static AlipayContext GetConfig()

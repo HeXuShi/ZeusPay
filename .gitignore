@@ -2,6 +2,8 @@ ZeusAlipay/bin/
 ZeusAlipay/obj/
 .vs
 setting.json
+alipay.setting.json
+paypal.setting.json
 Tests/ZeusAlipay.Tests/bin/
 Tests/ZeusAlipay.Tests/obj/
 /Demos/ZeusAlipayMvcApp/obj
@@ -12,3 +14,4 @@ Tests/ZeusAlipay.Tests/obj/
 /Demos/ZeusAlipayMvcApp/Properties/PublishProfiles
 ZeusPaypal/obj/
 ZeusPaypal/bin/
+/Tests/ZeusPaypal.Tests/obj

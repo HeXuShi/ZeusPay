@@ -11,6 +11,7 @@ namespace ZeusPaypal
         private string _host = null;
         public string ClientId { get; set; }
         public string Secret { get; set; }
+        public string AccessToken { get; set; }
         public string Host
         {
             get
