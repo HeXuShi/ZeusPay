@@ -34,6 +34,7 @@ namespace ZeusAlipay.Tests
             };
             arg.SetRSA2Sign(@"D:\Programing\Dev Repos\ZeusPay\alipayRootCert.crt");
             var client = new AlipayClient();
+            client.UseProductEnv();
             await PrecreateRequest.Request(client, arg);
         }
     }
