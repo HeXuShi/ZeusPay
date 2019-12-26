@@ -4,6 +4,14 @@ using System.Text;
 
 namespace ZeusAlipay
 {
+    //EncryptAlgorithm
+    //EncryptScheme
+    //EncryptMode
+    public enum EncryptMode
+    {
+        RSA2 = 0,
+        RSA = 1
+    }
     public class AlipayClient
     {
         private string SandboxHost => "https://openapi.alipaydev.com/gateway.do";
@@ -13,6 +21,8 @@ namespace ZeusAlipay
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
+        public string PrivateKey { get; set; }
+        public EncryptMode EncryptMode { get; set; } = EncryptMode.RSA2;
         public string Host 
         { 
             get 

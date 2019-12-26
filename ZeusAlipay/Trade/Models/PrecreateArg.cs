@@ -15,16 +15,6 @@ namespace ZeusAlipay.Trade.Models
             base._method = "alipay.trade.precreate";
             Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
-        public void SetRSA2Sign(string privatePem)
-        {
-            string text = JsonConvert.SerializeObject(BizContent);
-            Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA2");
-        }
-        public void SetRSASign(string privatePem)
-        {
-            string text = JsonConvert.SerializeObject(BizContent);
-            Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA");
-        }
     }
     public class PrecreateContent
     {

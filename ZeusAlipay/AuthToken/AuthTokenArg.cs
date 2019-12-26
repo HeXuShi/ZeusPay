@@ -20,12 +20,12 @@ namespace ZeusAlipay.AuthToken
         public void SetRSA2Sign(string privatePem)
         {
             string text = JsonConvert.SerializeObject(BizContent);
-            Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA2");
+          //  Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA2");
         }
         public void SetRSASign(string privatePem)
         {
             string text = JsonConvert.SerializeObject(BizContent);
-            Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA");
+          //  Sign = AlipaySignature.RSASignCharSet(text, privatePem, "utf-8", "RSA");
         }
     }
     public class AuthTokenContent

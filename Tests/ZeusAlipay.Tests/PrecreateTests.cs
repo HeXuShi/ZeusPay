@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
@@ -32,8 +33,8 @@ namespace ZeusAlipay.Tests
                 AppId = config.AppId,
                 BizContent = content
             };
-            arg.SetRSA2Sign(@"D:\Programing\Dev Repos\ZeusPay\alipayRootCert.crt");
             var client = new AlipayClient();
+            client.PrivateKey = @"D:\Programing\Dev Repos\ZeusPay\alipayRootCert.crt";
             client.UseProductEnv();
             await PrecreateRequest.Request(client, arg);
         }

@@ -499,7 +499,8 @@ namespace ZeusAlipay.Util
         private static byte[] GetPem(string type, byte[] data)
         {
             string pem = Encoding.UTF8.GetString(data);
-            string header = String.Format("-----BEGIN {0}-----\\n", type);
+            //string header = String.Format("-----BEGIN {0}-----\\n", type);
+            string header = String.Format("-----BEGIN {0}-----", type);
             string footer = String.Format("-----END {0}-----", type);
             if (pem.IndexOf(header) == -1)
             {
