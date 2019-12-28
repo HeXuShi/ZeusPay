@@ -15,7 +15,7 @@ namespace ZeusAlipay
         [JsonProperty("format")]
         public string Format => "JSON";
         [JsonProperty("charset")]
-        public string Charset => "utf-8";
+        public string Charset => "GBK";
 
         //[JsonProperty("sign_type")]
         //public string SignType { get; set; } = "RSA2";

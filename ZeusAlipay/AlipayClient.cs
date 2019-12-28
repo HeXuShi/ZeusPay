@@ -22,6 +22,8 @@ namespace ZeusAlipay
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
         public string PrivateKey { get; set; }
+        public string AppCertSN { get; set; }
+        public string AlipayRootCertSN { get; set; }
         public EncryptMode EncryptMode { get; set; } = EncryptMode.RSA2;
         public string Host 
         { 

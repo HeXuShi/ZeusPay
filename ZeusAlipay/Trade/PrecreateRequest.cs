@@ -56,6 +56,7 @@ namespace ZeusAlipay.Trade
             {
                 query += "&sign_type=RSA";
             }
+                query += $"&app_cert_sn={client.AppCertSN}&alipay_root_cert_sn={client.AlipayRootCertSN}";
             Regex rgx = new Regex(pattern);
             text = rgx.Replace(query, "");
             var queryString = HttpUtility.ParseQueryString(text);
@@ -76,20 +77,29 @@ namespace ZeusAlipay.Trade
             text = text.Replace(" \"", "");
             if (client.EncryptMode == EncryptMode.RSA2)
             {
-                string sign = AlipaySignature.RSASignCharSet(HttpUtility.HtmlEncode(text), client.PrivateKey, "utf-8", "RSA2");
+               string sign = AlipaySignature.RSASignCharSet(text, client.PrivateKey, "GBK", "RSA2");
+                //string sign = AlipaySignature.RSASignCharSet(HttpUtility.HtmlEncode(text), client.PrivateKey, "utf-8", "RSA2");
                 query = text + $"&sign={sign}";
             }
             else if (client.EncryptMode == EncryptMode.RSA)
             {
-                string sign = AlipaySignature.RSASignCharSet(HttpUtility.HtmlEncode(text), client.PrivateKey, "utf-8", "RSA");
+                string sign = AlipaySignature.RSASignCharSet(HttpUtility.HtmlEncode(text), client.PrivateKey, "GBK", "RSA");
                 query = text + $"&sign={sign}";
             }
             queryString = HttpUtility.ParseQueryString(query);
             query = string.Join("&", queryString.Cast<string>().Select(k => string.Format("{0}={1}", k, HttpUtility.UrlEncode(queryString[k]))));
 
+            var parameters = new Dictionary<string, string>();
+            foreach(var k in queryString.Cast<string>())
+            {
+               parameters.Add(k, queryString[k]);
+            }
+
+            var encodedContent = new FormUrlEncodedContent(parameters);
             //.Select(jp => jp.Name + "=" + HttpUtility.UrlEncode(jp.Value.ToString())));
             var http = new HttpClient();
-            var response = await http.GetAsync(client.Host + "?" + query);
+            //var response = await http.GetAsync(client.Host + "?" + query);
+            var response = await http.PostAsync(client.Host, encodedContent);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();

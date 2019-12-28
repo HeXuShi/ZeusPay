@@ -8,6 +8,8 @@ Tests/ZeusAlipay.Tests/bin/
 Tests/ZeusAlipay.Tests/obj/
 /Demos/ZeusAlipayMvcApp/obj
 /alipayRootCert.crt
+/appCertPublicKey.crt
+/alipayPrivateKey.txt
 /Demos/ZeusAlipayMvcApp/bin/Debug/netcoreapp3.1
 /Demos/ZeusAlipayMvcApp/.config
 /Demos/ZeusAlipayMvcApp/bin/Release/netcoreapp3.1
